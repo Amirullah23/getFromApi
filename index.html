@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        
+        #center {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            width: 100%;
+            text-align: center;
+        }
+        
+        #center img {
+            width: 400px;
+            height: auto;
+        }
+        
+        #myText {
+            width: 90%;
+            text-align: center;
+            margin: auto;
+        }
+        
+        button {
+            display: none;
+        }
+        
+        #div1 {
+            width: 40%;
+            margin-right: 30%;
+            margin-left: 30%;
+        }
+    </style>
+</head>
+
+<body>
+    <section id="center">
+        <input type="text" id="myText" value="https://api.github.com/users/Amirullah23">
+        <button type="button" onclick="x"></button>
+        <h1 id="myName"></h1>
+        <img id="myImg" src="">
+
+    </section>
+    <div id="div1">
+        <h4>ID : <span id="yourId"></span></h4>
+        <h4>Nama : <span id="yourName"></span></h4>
+        <h4>Nama : <span id="followers"></span></h4>
+        <h4>Nama : <span id="yourName"></span></h4>
+        <h4>Nama : <span id="yourName"></span></h4>
+        <h4>Nama : <span id="yourName"></span></h4>
+        <h4>Nama : <span id="yourName"></span></h4>
+
+
+
+
+    </div>
+    <script>
+        var x = document.getElementById("myText").value;
+        let a = x
+
+        fetch(a)
+
+        .then(response => {
+                return response.json()
+            })
+            .then(data => {
+                let get = data;
+                // console.log(get.name)
+                // console.log(get.login)
+                // console.log(get.avatar_url)
+
+                //your name
+                document.getElementById("myName").innerHTML = get.name;
+                //your pict
+                document.getElementById("myImg").src = get.avatar_url;
+
+                document.getElementById("yourName").innerHTML = get.name;
+                document.getElementById("yourId").innerHTML = get.id;
+                document.getElementById("followers").innerHTML = get.followers;
+
+
+
+
+                // var para = document.createElement("h3");
+                // var node = document.createTextNode(get.name);
+                // para.appendChild(node);
+
+                // var para1 = document.createElement("h3");
+                // var node1 = document.createTextNode(get.avatar_url);
+                // para1.appendChild(node1);
+
+                // var element = document.getElementById("div1");
+                // element.appendChild(para);
+                // element.appendChild(para1);
+
+                console.log(get)
+            })
+            .catch(err => {
+
+            })
+    </script>
+
+
+</body>
+
+</html>
