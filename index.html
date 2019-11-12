@@ -54,12 +54,11 @@
     </section>
     <div id="div1">
         <h4>ID : <span id="yourId"></span></h4>
-        <h4>Nama : <span id="yourName"></span></h4>
-        <h4>Nama : <span id="followers"></span></h4>
-        <h4>Nama : <span id="yourName"></span></h4>
-        <h4>Nama : <span id="yourName"></span></h4>
-        <h4>Nama : <span id="yourName"></span></h4>
-        <h4>Nama : <span id="yourName"></span></h4>
+        <h4>Name : <span id="yourName"></span></h4>
+        <h4>Your Followers : <span id="followers"></span></h4>
+        <h4>Your Following : <span id="following"></span></h4>
+        <h4>Your Repo : <span id="public_repos"></span></h4>
+        <h4>Link GitHub : <a id="link" href="">Clik for open your Account</a></h4>
 
 
 
@@ -88,6 +87,9 @@
                 document.getElementById("yourName").innerHTML = get.name;
                 document.getElementById("yourId").innerHTML = get.id;
                 document.getElementById("followers").innerHTML = get.followers;
+                document.getElementById("following").innerHTML = get.following;
+                document.getElementById("public_repos").innerHTML = get.public_repos;
+                document.getElementById("link").href = get.html_url;
 
 
 
