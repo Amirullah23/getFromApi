@@ -32,23 +32,24 @@
             margin: auto;
         }
         
-        button {
-            display: none;
-        }
-        
         #div1 {
             width: 40%;
             margin-right: 30%;
             margin-left: 30%;
         }
     </style>
+    <script>
+        function reload() {
+            location.reload()
+        }
+    </script>
 </head>
 
 <body>
     <section id="center">
         <form action="followers.html" method="post">
             <input type="text" id="myText" value="Amirullah23">
-            <button type="button" onclick="x"></button>
+            <button type="button" onclick="reload()"></button>
         </form>
         <h1 id="myName"></h1>
         <img id="myImg" src="">
@@ -68,9 +69,15 @@
     </div>
 
     <script>
-        var x = document.getElementById("myText").value;
+        function click() {
+            var x = document.getElementById("myText").value;
+            return x
 
-        let a = fetch(`https://api.github.com/users/${x}`)
+        }
+        // console.log(click())
+        let abc = click()
+
+        let a = fetch(`https://api.github.com/users/${abc}`)
 
         .then(response => {
                 return response.json()
