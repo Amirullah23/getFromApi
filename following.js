@@ -73,8 +73,7 @@
 
 
 
-
-
+let userName = localStorage.getItem('name')
 
 
 function createNode(element) {
@@ -86,7 +85,7 @@ function append(parent, el) {
 }
 
 const ul = document.getElementById('authors');
-const url = 'https://api.github.com/users/Amirullah23/following';
+const url = `https://api.github.com/users/${userName}/following`;
 fetch(url)
     .then((resp) => resp.json())
     .then(function(data) {

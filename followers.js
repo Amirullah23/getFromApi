@@ -71,11 +71,7 @@
 
 
 
-
-
-
-
-
+let username = localStorage.getItem("name")
 
 function createNode(element) {
     return document.createElement(element);
@@ -86,21 +82,26 @@ function append(parent, el) {
 }
 
 const ul = document.getElementById('authors');
-const url = 'https://api.github.com/users/Amirullah23/followers';
+
+const url = `https://api.github.com/users/${username}/followers`;
+
 fetch(url)
     .then((resp) => resp.json())
     .then(function(data) {
         let authors = data;
         return authors.map(function(author) {
             let li = createNode('li'),
-                span = createNode('p');
-            img = createNode('img'),
+                span = createNode('p'),
+                a = createNode('a'),
+                img = createNode('img');
 
 
-                span.innerHTML = `${author.login}`;
+            span.innerHTML = `${author.login}`;
+            a.href = author.html_url;
             img.src = author.avatar_url;
+            append(li, a);
+            append(a, span);
             append(li, img);
-            append(li, span);
             append(ul, li);
         })
     })

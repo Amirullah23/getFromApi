@@ -47,7 +47,7 @@
 <body>
     <section id="center">
         <form action="followers.html" method="post">
-            <input type="text" id="myText" value="https://api.github.com/users/Amirullah23">
+            <input type="text" id="myText" value="Amirullah23">
             <button type="button" onclick="x"></button>
         </form>
         <h1 id="myName"></h1>
@@ -69,18 +69,17 @@
 
     <script>
         var x = document.getElementById("myText").value;
-        let a = x
 
-        fetch(a)
+        let a = fetch(`https://api.github.com/users/${x}`)
 
         .then(response => {
                 return response.json()
             })
             .then(data => {
                 let get = data;
-                console.log(followers_url)
-                    // console.log(get.login)
-                    // console.log(get.avatar_url)
+                // console.log(followers_url)
+                // console.log(get.login)
+                // console.log(get.avatar_url)
 
                 //your name
                 document.getElementById("myName").innerHTML = get.name;
@@ -115,6 +114,8 @@
 
             })
     </script>
+    <script src="index.js"></script>
+
 
     <!-- <script type="module" src="following.js"></script> -->
 
