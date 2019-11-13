@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Get Data from Api</title>
     <style>
         body {
             margin: 0;
@@ -78,9 +78,9 @@
             })
             .then(data => {
                 let get = data;
-                // console.log(followers_url)
-                // console.log(get.login)
-                // console.log(get.avatar_url)
+                console.log(followers_url)
+                    // console.log(get.login)
+                    // console.log(get.avatar_url)
 
                 //your name
                 document.getElementById("myName").innerHTML = get.name;
