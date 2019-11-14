@@ -112,35 +112,6 @@
 
 
     <script>
-        function yourRepo() {
-            fetch('https://api.github.com/users/Amirullah23/repos')
-                .then((Response) => Response.json())
-                .then(function(data) {
-                    let repos = data
-                    let num = 1
-
-                    return repos.map(function(reposs) {
-                        console.log(reposs.name)
-                        let div = document.createElement('li'),
-                            nameRepo = document.createElement('p'),
-                            txtName = document.createTextNode(reposs.name),
-                            pictRepo = document.createElement('img')
-                        pictRepo.src = `https://picsum.photos/id/${num++}/200/300`
-                        nameRepo.appendChild(txtName)
-                        let secRepo = document.getElementById('reposss')
-                        secRepo.appendChild(div)
-                        div.appendChild(nameRepo)
-                        div.appendChild(pictRepo)
-
-
-
-
-
-                    })
-                })
-        }
-        yourRepo()
-
         function click() {
             var x = document.getElementById("myText").value;
             return x
@@ -189,6 +160,35 @@
 
                 console.log(get)
             })
+
+        function yourRepo() {
+            fetch(`https://api.github.com/users/${abc}/repos`)
+                .then((Response) => Response.json())
+                .then(function(data) {
+                    let repos = data
+                    let num = 1
+
+                    return repos.map(function(reposs) {
+                        console.log(reposs.name)
+                        let div = document.createElement('li'),
+                            nameRepo = document.createElement('p'),
+                            txtName = document.createTextNode(reposs.name),
+                            pictRepo = document.createElement('img')
+                        pictRepo.src = `https://picsum.photos/id/${num++}/200/300`
+                        nameRepo.appendChild(txtName)
+                        let secRepo = document.getElementById('reposss')
+                        secRepo.appendChild(div)
+                        div.appendChild(nameRepo)
+                        div.appendChild(pictRepo)
+
+
+
+
+
+                    })
+                })
+        }
+        yourRepo()
             .catch(err => {
 
             })
