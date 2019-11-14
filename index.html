@@ -26,6 +26,18 @@
             height: auto;
         }
         
+        #myName:hover {
+            color: brown;
+        }
+        
+        h4:hover {
+            font-size: large;
+        }
+        
+        #myImg:hover {
+            width: 500px;
+        }
+        
         #myText {
             width: 90%;
             text-align: center;
@@ -33,9 +45,33 @@
         }
         
         #div1 {
-            width: 40%;
-            margin-right: 30%;
-            margin-left: 30%;
+            text-align: center;
+            width: 50%;
+        }
+        
+        #reposss {
+            float: right;
+            text-align: center;
+            width: 50%;
+        }
+        
+        #reposss li {
+            font-size: smaller;
+            float: right;
+            list-style: none;
+            margin-right: 10px;
+            margin-left: 10px;
+            text-align: center;
+        }
+        
+        #reposss img {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .content {
+            display: flex;
+            justify-content: center;
         }
     </style>
     <script>
@@ -46,29 +82,65 @@
 </head>
 
 <body>
+
     <section id="center">
         <form action="followers.html" method="post">
+            <label for="text">Type Your username GitHub</label>
             <input type="text" id="myText" value="Amirullah23">
-            <button type="button" onclick="reload()"></button>
+            <button type="button" onclick="reload()">Show your Profile</button>
         </form>
         <h1 id="myName"></h1>
         <img id="myImg" src="">
 
     </section>
-    <div id="div1">
-        <h4>ID : <span id="yourId"></span></h4>
-        <h4>Name : <span id="yourName"></span></h4>
-        <h4>MY Followers : <a href="followers.html"><span id="followers"></span></a></h4>
-        <h4>MY Following : <a href="following.html"><span id="following"></span></a></h4>
-        <h4>Your Repo : <span id="public_repos"></span></h4>
-        <h4>Link GitHub : <a id="link" href="">Clik for open your Account</a></h4>
+    <main class="content">
+        <div id="div1">
+
+            <h1>Your Profile</h1>
+            <h4>ID : <span id="yourId"></span></h4>
+            <h4>Name : <span id="yourName"></span></h4>
+            <h4>MY Followers : <a href="followers.html"><span id="followers"></span></a></h4>
+            <h4>MY Following : <a href="following.html"><span id="following"></span></a></h4>
+            <h4>MY Repo : <span id="public_repos"></span></h4>
+            <h4>Link GitHub : <a id="link" href="">Clik for open your Account</a></h4>
+        </div>
+        <section id="reposss">
+            <h1>YourRepo</h1>
+        </section>
+    </main>
 
 
-
-
-    </div>
 
     <script>
+        function yourRepo() {
+            fetch('https://api.github.com/users/Amirullah23/repos')
+                .then((Response) => Response.json())
+                .then(function(data) {
+                    let repos = data
+                    let num = 1
+
+                    return repos.map(function(reposs) {
+                        console.log(reposs.name)
+                        let div = document.createElement('li'),
+                            nameRepo = document.createElement('p'),
+                            txtName = document.createTextNode(reposs.name),
+                            pictRepo = document.createElement('img')
+                        pictRepo.src = `https://picsum.photos/id/${num++}/200/300`
+                        nameRepo.appendChild(txtName)
+                        let secRepo = document.getElementById('reposss')
+                        secRepo.appendChild(div)
+                        div.appendChild(nameRepo)
+                        div.appendChild(pictRepo)
+
+
+
+
+
+                    })
+                })
+        }
+        yourRepo()
+
         function click() {
             var x = document.getElementById("myText").value;
             return x
